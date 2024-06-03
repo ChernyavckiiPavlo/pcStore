@@ -17,32 +17,33 @@
   </nav>
 </header>
 <main>
-  <section class="product-details">
+  <div class="product-details">
     <h2 th:text="${product.name}">Product Name</h2>
-    <p th:text="${product.description}">Product Description</p>
-    <p>Ціна: <span th:text="${product.price}">0.00</span> грн</p>
-    <img th:src="${product.photoUrl}" alt="Product Image"/>
+    <img th:src="@{${product.photoUrl}}" alt="Product Image">
+    <p><strong>Price: </strong><span th:text="${product.price}"></span></p>
+
+    <!-- Processor specific details -->
     <div th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
-      <h3>Processor Details</h3>
-      <p>Бренд: <span th:text="${product.brand}">Brand</span></p>
-      <p>Кількість ядер: <span th:text="${product.cores}">0</span></p>
-      <p>Частота: <span th:text="${product.frequency}">0.0</span> GHz</p>
-      <p>Тип роз'єма: <span th:text="${product.socketType}">Socket Type</span></p>
-      <p>Термін гарантії: <span th:text="${product.warrantyMonths}">0</span> місяців</p>
-      <p>Країна виробництва: <span th:text="${product.countryOfOrigin}">Country</span></p>
+      <p><strong>Brand: </strong><span th:text="${product.brand}"></span></p>
+      <p><strong>Cores: </strong><span th:text="${product.cores}"></span></p>
+      <p><strong>Frequency: </strong><span th:text="${product.frequency}"></span></p>
+      <p><strong>Socket Type: </strong><span th:text="${product.socketType}"></span></p>
+      <p><strong>Warranty Months: </strong><span th:text="${product.warrantyMonths}"></span></p>
+      <p><strong>Country of Origin: </strong><span th:text="${product.countryOfOrigin}"></span></p>
     </div>
+
+    <!-- Laptop specific details -->
     <div th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
-      <h3>Laptop Details</h3>
-      <p>Назва процесора: <span th:text="${product.processorName}">Processor Name</span></p>
-      <p>Оперативна пам'ять: <span th:text="${product.ram}">0</span> GB</p>
-      <p>Частота оновлення: <span th:text="${product.refreshRate}">0</span> Hz</p>
-      <p>Розширення: <span th:text="${product.resolution}">Resolution</span></p>
-      <p>Діагональ екрану: <span th:text="${product.screenDiagonal}">0.0</span> inch</p>
-      <p>Тип екрану: <span th:text="${product.screenType}">Screen Type</span></p>
-      <p>Ємність SSD: <span th:text="${product.ssdCapacity}">0</span> GB</p>
-      <p>Назва відеокарти: <span th:text="${product.gpu}">GPU</span></p>
+      <p><strong>GPU: </strong><span th:text="${product.gpu}"></span></p>
+      <p><strong>Processor Name: </strong><span th:text="${product.processorName}"></span></p>
+      <p><strong>RAM: </strong><span th:text="${product.ram}"></span></p>
+      <p><strong>Refresh Rate: </strong><span th:text="${product.refreshRate}"></span></p>
+      <p><strong>Resolution: </strong><span th:text="${product.resolution}"></span></p>
+      <p><strong>Screen Diagonal: </strong><span th:text="${product.screenDiagonal}"></span></p>
+      <p><strong>Screen Type: </strong><span th:text="${product.screenType}"></span></p>
+      <p><strong>SSD Capacity: </strong><span th:text="${product.ssdCapacity}"></span></p>
     </div>
-  </section>
+  </div>
 </main>
 <footer>
   <p>&copy; 2024 Комп'ютерні запчастини. Всі права захищені.</p>
