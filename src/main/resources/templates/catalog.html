@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Catalog</title>
+  <title>Каталог продуктів</title>
   <link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 <body>
@@ -17,20 +17,20 @@
   </nav>
 </header>
 <main>
-  <section class="catalog">
-    <h2>Каталог товарів</h2>
+  <h1>Каталог продуктів</h1>
+  <div class="catalog">
     <div class="products">
       <div th:each="product : ${products}" class="product">
         <h3 th:text="${product.name}">Product Name</h3>
-        <img th:src="@{${product.photoUrl}}" alt="Product Image">
         <p th:text="${product.price}">Product Price</p>
+        <img th:src="@{${product.photoUrl}}" alt="Product Image"/>
         <a th:href="@{/products/details/{id}(id=${product.id})}">View Details</a>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 <footer>
-  <p>&copy; 2024 Комп'ютерні запчастини. Всі права захищені.</p>
+  <p>© 2023 Your Company. All rights reserved.</p>
 </footer>
 </body>
 </html>
