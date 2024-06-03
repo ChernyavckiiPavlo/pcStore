@@ -3,11 +3,12 @@
 <head>
   <title>Головна</title>
   <link rel="stylesheet" th:href="@{/css/home.css}" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Подключаем шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
   <div class="logo">PC STORE</div>
+  <div class="logo">Ласкаво просимо на наш сайт</div>
   <nav>
     <ul>
       <li><a href="/home">Головна</a></li>
@@ -17,7 +18,6 @@
   </nav>
 </header>
 <main>
-  <h1>Ласкаво просимо на наш сайт</h1>
   <div class="search-container">
     <form action="/search" method="get">
       <input type="text" name="query" placeholder="Пошук товарів...">
