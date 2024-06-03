@@ -3,6 +3,7 @@
 <head>
   <title>Результати пошуку</title>
   <link rel="stylesheet" th:href="@{/css/search-results.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Подключаем шрифт -->
 </head>
 <body>
 <header>
@@ -27,8 +28,10 @@
     <div th:each="product : ${products}" class="product">
       <img th:src="@{${product.photoUrl}}" alt="Product Image"/>
       <h3><a th:href="@{/products/details/{id}(id=${product.id})}" th:text="${product.name}">Product Name</a></h3>
-      <p th:text="${product.price}">Product Price</p>
-      <a  class="btn-buy">Купити</a>
+      <div class="price-buy-container">
+        <p class="price" th:text="${product.price}">Product Price</p>
+        <a href="#" class="btn-buy">Купити</a>
+      </div>
     </div>
   </div>
 </main>

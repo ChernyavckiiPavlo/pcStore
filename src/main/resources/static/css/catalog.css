@@ -1,22 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif; /* Используем красивый шрифт */
+    font-size: 18px; /* Увеличиваем общий размер шрифта */
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #f8f9fa;
 }
 
 header {
     background-color: #ffc107;
-    padding: 10px;
+    padding: 20px; /* Увеличиваем отступы */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header .logo {
-    font-size: 24px;
+    font-size: 32px; /* Увеличиваем размер логотипа */
     font-weight: bold;
 }
 
@@ -25,7 +27,7 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
+    gap: 30px; /* Увеличиваем расстояние между пунктами меню */
 }
 
 header nav ul li {
@@ -35,8 +37,9 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: #000;
-    padding: 5px 10px;
+    padding: 10px 20px; /* Увеличиваем отступы */
     border-radius: 5px;
+    font-size: 20px; /* Увеличиваем размер шрифта */
 }
 
 header nav ul li a:hover {
@@ -45,27 +48,53 @@ header nav ul li a:hover {
 
 main {
     flex: 1;
-    padding: 20px;
+    padding: 40px; /* Увеличиваем отступы */
     background-color: #f8f9fa;
 }
 
-.products-container {
+.search-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
     justify-content: center;
+    margin-bottom: 40px; /* Увеличиваем отступ */
+}
+
+.search-container input[type="text"] {
+    padding: 15px; /* Увеличиваем отступы */
+    width: 400px; /* Увеличиваем ширину поля поиска */
+    margin-right: 15px; /* Увеличиваем отступ справа */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px; /* Увеличиваем размер шрифта */
+}
+
+.search-container button {
+    padding: 15px 30px; /* Увеличиваем отступы */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 18px; /* Увеличиваем размер шрифта */
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px; /* Увеличиваем отступы */
+    padding: 20px;
 }
 
 .product {
     background-color: #fff;
-    padding: 10px;
+    padding: 20px; /* Увеличиваем отступы */
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: calc(20% - 20px); /* Подгоняем под 5 товаров в ряду */
-    box-sizing: border-box;
     text-align: center;
-    cursor: pointer;
     text-decoration: none;
     color: inherit;
 }
@@ -74,58 +103,48 @@ main {
     width: 100%;
     height: auto;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Увеличиваем отступ */
+    max-height: 200px; /* Ограничиваем высоту изображения */
+    object-fit: contain; /* Сохраняем пропорции изображения */
 }
 
 .product h3 {
-    margin: 10px 0;
-    font-size: 18px;
+    margin: 15px 0;
+    font-size: 22px; /* Увеличиваем размер шрифта */
 }
 
-.product p {
-    margin: 10px 0;
-    font-size: 16px;
+.product .price-buy-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px; /* Увеличиваем отступ */
+}
+
+.product .price {
+    font-size: 20px; /* Увеличиваем размер шрифта */
     color: #007bff;
     font-weight: bold;
 }
 
-.btn-buy {
-    display: inline-block;
-    padding: 10px 20px;
+.product .btn-buy {
+    padding: 10px 20px; /* Увеличиваем отступы */
     background-color: #28a745;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-size: 20px; /* Увеличиваем размер шрифта */
 }
 
-.btn-buy:hover {
+.product .btn-buy:hover {
     background-color: #218838;
 }
 
-.search-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.search-container input[type="text"] {
-    padding: 10px;
-    width: 300px;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.search-container button {
-    padding: 10px 20px;
-    background-color: #007bff;
+footer {
+    background-color: #343a40;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-container button:hover {
-    background-color: #0056b3;
+    text-align: center;
+    padding: 20px 0; /* Увеличиваем отступы */
+    position: relative;
+    width: 100%;
 }

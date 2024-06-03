@@ -5,18 +5,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-size: 18px; /* Увеличен общий размер шрифта */
 }
 
 header {
     background-color: #ffc107;
-    padding: 10px;
+    padding: 20px; /* Увеличен padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header .logo {
-    font-size: 24px;
+    font-size: 32px; /* Увеличен размер логотипа */
     font-weight: bold;
 }
 
@@ -25,7 +26,7 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
+    gap: 20px; /* Увеличен gap */
 }
 
 header nav ul li {
@@ -35,7 +36,7 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: #000;
-    padding: 5px 10px;
+    padding: 10px 20px; /* Увеличен padding */
     border-radius: 5px;
 }
 
@@ -45,29 +46,34 @@ header nav ul li a:hover {
 
 main {
     flex: 1;
-    padding: 20px;
+    padding: 40px; /* Увеличен padding */
     background-color: #f8f9fa;
+}
+
+.catalog {
+    margin: 20px 0;
 }
 
 .products-container {
     display: flex;
-    flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 20px;
+    white-space: nowrap;
     padding: 20px;
+    gap: 20px;
 }
 
 .product {
+    display: inline-block;
     background-color: #fff;
-    padding: 10px;
+    padding: 20px;
     margin-right: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
     box-sizing: border-box;
     text-align: center;
-    flex: 0 0 auto;
-    position: relative;
+    text-decoration: none;
+    color: inherit;
 }
 
 .product img {
@@ -79,17 +85,20 @@ main {
 
 .product h3 {
     margin: 10px 0;
-    font-size: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 24px; /* Увеличен размер текста */
 }
 
 .product p {
     margin: 10px 0;
-    font-size: 16px;
+    font-size: 20px; /* Увеличен размер текста */
     color: #007bff;
     font-weight: bold;
+}
+
+.price-buy-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn-buy {
@@ -100,6 +109,7 @@ main {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-size: 18px; /* Увеличен размер текста */
 }
 
 .btn-buy:hover {
@@ -117,6 +127,7 @@ main {
     margin-right: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 18px; /* Увеличен размер текста */
 }
 
 .search-container button {
@@ -127,6 +138,7 @@ main {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 18px; /* Увеличен размер текста */
 }
 
 .search-container button:hover {
@@ -137,7 +149,8 @@ footer {
     background-color: #343a40;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px; /* Увеличен padding */
     position: relative;
     width: 100%;
+    font-size: 18px; /* Увеличен размер текста */
 }
