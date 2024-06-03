@@ -2,88 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Головна</title>
-  <link rel="stylesheet" th:href="@{/css/main.css}" />
-  <style>
-    .products-container {
-      display: flex;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    .product {
-      display: inline-block;
-      background-color: #fff;
-      padding: 10px;
-      margin-right: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      width: 200px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .product img {
-      width: 100%;
-      height: auto;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
-
-    .product h3 {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-
-    .product p {
-      margin: 10px 0;
-      font-size: 16px;
-      color: #007bff;
-      font-weight: bold;
-    }
-
-    .btn-buy {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .btn-buy:hover {
-      background-color: #218838;
-    }
-
-    .search-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .search-container input[type="text"] {
-      padding: 10px;
-      width: 300px;
-      margin-right: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .search-container button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .search-container button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <link rel="stylesheet" th:href="@{/css/home.css}" />
 </head>
 <body>
 <header>
@@ -108,9 +27,9 @@
   <div class="products-container">
     <div th:each="product : ${products}" class="product">
       <img th:src="@{${product.photoUrl}}" alt="Product Image"/>
-      <h3 th:text="${product.name}">Product Name</h3>
+      <h3><a th:href="@{/products/details/{id}(id=${product.id})}" th:text="${product.name}">Product Name</a></h3>
       <p th:text="${product.price}">Product Price</p>
-      <a th:href="@{/products/details/{id}(id=${product.id})}" class="btn-buy">Купити</a>
+      <a href="#" class="btn-buy">Купити</a>
     </div>
   </div>
 </main>
