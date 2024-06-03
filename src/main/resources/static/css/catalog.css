@@ -49,20 +49,12 @@ main {
     background-color: #f8f9fa;
 }
 
-footer {
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
-}
-
 .products-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    justify-content: center;
 }
 
 .product {
@@ -70,7 +62,7 @@ footer {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 200px;
+    width: calc(20% - 20px); /* Подгоняем под 5 товаров в ряду */
     box-sizing: border-box;
     text-align: center;
     cursor: pointer;
