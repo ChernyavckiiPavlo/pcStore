@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product Details</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+  <h1>Product Details</h1>
+</header>
+<main>
+  <div class="product-details">
+    <img th:src="@{${product.photoUrl}}" alt="Product Image" />
+    <h2 th:text="${product.name}"></h2>
+    <p th:text="'Price: $' + ${product.price}"></p>
+    <div th:switch="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+      <div th:case="true">
+        <p th:text="'GPU: ' + ${product.gpu}"></p>
+        <p th:text="'Processor: ' + ${product.processorName}"></p>
+        <p th:text="'RAM: ' + ${product.ram} + ' GB'"></p>
+        <p th:text="'Refresh Rate: ' + ${product.refreshRate} + ' Hz'"></p>
+        <p th:text="'Resolution: ' + ${product.resolution}"></p>
+        <p th:text="'Screen Diagonal: ' + ${product.screenDiagonal} + ' inches'"></p>
+        <p th:text="'Screen Type: ' + ${product.screenType}"></p>
+        <p th:text="'SSD Capacity: ' + ${product.ssdCapacity} + ' GB'"></p>
+      </div>
+      <div th:case="false">
+        <p th:text="'Brand: ' + ${product.brand}"></p>
+        <p th:text="'Cores: ' + ${product.cores}"></p>
+        <p th:text="'Frequency: ' + ${product.frequency} + ' GHz'"></p>
+        <p th:text="'Socket Type: ' + ${product.socketType}"></p>
+        <p th:text="'Warranty: ' + ${product.warrantyMonths} + ' months'"></p>
+        <p th:text="'Country of Origin: ' + ${product.countryOfOrigin}"></p>
+      </div>
+    </div>
+  </div>
+  <a href="/home">Back to Home</a>
+</main>
+<footer>
+  <p>&copy; 2024 Computer Parts Shop</p>
+</footer>
+</body>
+</html>

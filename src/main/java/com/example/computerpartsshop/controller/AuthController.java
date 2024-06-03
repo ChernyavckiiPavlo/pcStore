@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AuthController {
     private UserService userService;
+
     @Autowired
     public AuthController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/login")
     public String showLoginForm() {
         return "login"; // Это будет искать шаблон login.html
@@ -31,9 +33,5 @@ public class AuthController {
     public String registerUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/login";
-    }
-    @GetMapping("/home")
-    public String showHomePage() {
-        return "home";
     }
 }
