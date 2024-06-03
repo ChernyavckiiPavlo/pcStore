@@ -1,2 +1,3 @@
-package com.example.computerpartsshop;public class DataLoader {
+package com.example.computerpartsshop;
+public class DataLoader {
 }

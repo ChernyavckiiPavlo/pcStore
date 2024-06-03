@@ -17,6 +17,10 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+    public List<Product> getTopProducts(int limit) {
+        return productRepository.findTopN(limit);
+    }
+
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -27,5 +31,9 @@ public class ProductService {
 
     public void saveProduct(Product product) {
         productRepository.save(product);
+    }
+
+    public List<Product> searchProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
     }
 }
