@@ -10,13 +10,16 @@ body {
 
 .register-container {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 40px; /* Увеличиваем внутренние отступы */
+    border-radius: 10px; /* Увеличиваем радиус скругления */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Увеличиваем ширину контейнера */
+    max-width: 90%; /* Ограничиваем максимальную ширину */
 }
 
 .register-container h1 {
     margin-top: 0;
+    font-size: 28px; /* Увеличиваем размер шрифта заголовка */
 }
 
 .register-container form {
@@ -25,18 +28,20 @@ body {
 }
 
 .register-container form input {
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px; /* Увеличиваем нижний отступ */
+    padding: 15px; /* Увеличиваем внутренние отступы */
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px; /* Увеличиваем размер шрифта */
 }
 
 .register-container form button {
-    padding: 10px;
+    padding: 15px; /* Увеличиваем внутренние отступы */
     background-color: #ffc107;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px; /* Увеличиваем размер шрифта */
 }
 
 .register-container form button:hover {

@@ -49,10 +49,19 @@ main {
     background-color: #f8f9fa;
 }
 
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+}
+
 .products-container {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 20px;
     padding: 20px;
 }
@@ -60,14 +69,14 @@ main {
 .product {
     background-color: #fff;
     padding: 10px;
-    margin-right: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 200px;
+    width: calc(33.333% - 20px);
     box-sizing: border-box;
     text-align: center;
-    flex: 0 0 auto;
-    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .product img {
@@ -80,9 +89,6 @@ main {
 .product h3 {
     margin: 10px 0;
     font-size: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .product p {
@@ -131,13 +137,4 @@ main {
 
 .search-container button:hover {
     background-color: #0056b3;
-}
-
-footer {
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
 }
