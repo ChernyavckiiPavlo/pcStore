@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Головна сторінка</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+  <div class="logo">Logo</div>
+  <nav>
+    <ul>
+      <li><a href="#">Каталог</a></li>
+      <li><a href="#">Знайти</a></li>
+      <li th:if="${#request.remoteUser == null}"><a href="/login">Увійти</a></li>
+      <li th:if="${#request.remoteUser != null}"><a href="/logout">Вийти</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="catalog">
+    <h2>Каталог товарів</h2>
+    <!-- Місце для каталогу товарів -->
+    <div class="products">
+      <div class="product">
+        <h3>Товар 1</h3>
+        <p>Опис товару 1</p>
+      </div>
+      <div class="product">
+        <h3>Товар 2</h3>
+        <p>Опис товару 2</p>
+      </div>
+      <!-- Додайте більше товарів тут -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 Комп'ютерні запчастини. Всі права захищені.</p>
+</footer>
+</body>
+</html>

@@ -32,4 +32,8 @@ public class AuthController {
         userService.saveUser(user);
         return "redirect:/login";
     }
+    @GetMapping("/home")
+    public String showHomePage() {
+        return "home";
+    }
 }
