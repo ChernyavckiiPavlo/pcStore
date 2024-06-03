@@ -17,14 +17,13 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getTopProducts(int limit) {
-        return productRepository.findTopN(limit);
-    }
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
-
+    public List<Product> getFirstSevenProducts() {
+        return productRepository.findFirst7ByOrderByIdAsc();
+    }
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
