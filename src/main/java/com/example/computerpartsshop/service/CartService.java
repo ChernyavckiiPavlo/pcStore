@@ -15,7 +15,7 @@ public class CartService {
     private CartItemRepository cartItemRepository;
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductRepository productRepository; // Добавление ProductRepository
 
     public List<CartItem> getCartItems() {
         return cartItemRepository.findAll();

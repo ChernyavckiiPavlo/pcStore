@@ -6,11 +6,15 @@ import com.example.computerpartsshop.repository.CartItemRepository;
 import com.example.computerpartsshop.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 @Service
 public class OrderService {
+    private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -31,8 +35,15 @@ public class OrderService {
         order.setCartItems(cartItems);
 
         orderRepository.save(order);
-        cartItemRepository.deleteAll();
+        logger.info("Order created with id: " + order.getId());
+
+        clearCart();
 
         return order;
+    }
+
+    private void clearCart() {
+        cartItemRepository.deleteAll();
+        logger.info("Cart cleared");
     }
 }
