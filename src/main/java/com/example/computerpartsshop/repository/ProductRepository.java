@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> findFirst7ByOrderByIdAsc();
+    List<Product> findFirst10ByOrderByIdAsc();
 
     List<Product> findByNameContainingIgnoreCase(String name);
 }

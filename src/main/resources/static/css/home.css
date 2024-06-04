@@ -61,7 +61,7 @@ main {
     overflow-x: auto;
     white-space: nowrap;
     padding: 20px;
-    gap: 20px;
+    gap: 30px;
 }
 
 .product {
@@ -73,15 +73,16 @@ main {
     text-align: center;
     text-decoration: none;
     color: inherit;
+    width: 300px; /* Увеличиваем ширину */
+    box-sizing: border-box;
 }
 
 .product img {
     width: 100%;
-    height: auto;
+    height: 200px; /* Ограничиваем высоту изображения */
     border-bottom: 1px solid #ddd;
     margin-bottom: 15px; /* Увеличиваем отступ */
-    max-height: 200px; /* Ограничиваем высоту изображения */
-    object-fit: contain; /* Сохраняем
+    object-fit: contain; /* Сохраняем пропорции */
 }
 
 .product h3 {
@@ -90,8 +91,8 @@ main {
 }
 
 .product p {
-    margin: 10px 0;
-    font-size: 20px; /* Увеличен размер текста */
+    margin: 15px 0;
+    font-size: 22px; /* Увеличен размер текста */
     color: #007bff;
     font-weight: bold;
 }
@@ -101,7 +102,6 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-top: 15px; /* Увеличиваем отступ */
-
 }
 .price {
     display: inline-block;
@@ -136,16 +136,16 @@ main {
     width: 400px; /* Увеличиваем ширину поля поиска */
     margin-right: 15px; /* Увеличиваем отступ справа */
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 18px; /* Увеличиваем размер шрифта */
 }
 
 .search-container button {
-    padding: 15px 30px; /* Увеличиваем отступы */
+    padding: 10px 20px; /* Увеличиваем отступы */
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 18px; /* Увеличиваем размер шрифта */

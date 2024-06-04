@@ -22,7 +22,7 @@ public class ProductService {
         return productRepository.findAll();
     }
     public List<Product> getFirstSevenProducts() {
-        return productRepository.findFirst7ByOrderByIdAsc();
+        return productRepository.findFirst10ByOrderByIdAsc();
     }
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
