@@ -19,6 +19,7 @@
 <main>
   <h1>Оформление заказа</h1>
   <form th:action="@{/order/checkout}" method="post">
+    <input type="hidden" name="userId" th:value="${order.userId}" />
     <div>
       <label for="name">Имя:</label>
       <input type="text" id="name" name="customerName" required>

@@ -1,7 +1,9 @@
 package com.example.computerpartsshop.controller;
 
 import com.example.computerpartsshop.model.Order;
+import com.example.computerpartsshop.model.User;
 import com.example.computerpartsshop.service.OrderService;
+import com.example.computerpartsshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +15,23 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/checkout")
     public String checkoutForm(Model model) {
-        model.addAttribute("order", new Order());
+        Order order = new Order();
+        User currentUser = userService.getCurrentUser();
+        if (currentUser != null) {
+            order.setUserId(currentUser.getId());
+        }
+        model.addAttribute("order", order);
         return "checkout";
     }
 
     @PostMapping("/checkout")
     public String processCheckout(@ModelAttribute Order order) {
-        orderService.createOrder(order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone());
+        orderService.createOrder(order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone(), order.getUserId());
         return "redirect:/order/confirmation";
     }
 
