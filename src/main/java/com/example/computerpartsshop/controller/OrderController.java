@@ -21,7 +21,7 @@ public class OrderController {
 
     @PostMapping("/checkout")
     public String processCheckout(@ModelAttribute Order order) {
-        orderService.createOrder(order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone());
+        orderService.createOrder(order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone(), order.getUserId());
         return "redirect:/order/confirmation";
     }
 

@@ -5,20 +5,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "orders") // Измените имя таблицы на "orders"
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> cartItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     private String customerName;
     private String customerAddress;
     private String customerEmail;
     private String customerPhone;
 
+    // Добавляем id пользователя
+    private Long userId;
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -33,6 +40,14 @@ public class Order {
 
     public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public String getCustomerName() {
@@ -66,5 +81,12 @@ public class Order {
     public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
     }
-// Getters and Setters
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }
