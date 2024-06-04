@@ -134,6 +134,7 @@ main {
 .search-container input[type="text"] {
     padding: 15px; /* Увеличиваем отступы */
     width: 400px; /* Увеличиваем ширину поля поиска */
+    height: 10px;
     margin-right: 15px; /* Увеличиваем отступ справа */
     border: 1px solid #ddd;
     border-radius: 15px;

@@ -19,17 +19,7 @@
 </header>
 <main>
   <div class="product-details">
-    <div class="product-header">
-      <h2 th:text="${product.name}">Product Name</h2>
-      <div class="product-image">
-        <img th:src="@{${product.photoUrl}}" alt="Product Image">
-      </div>
-      <div class="product-price">
-        <p><strong>Ціна: </strong><span th:text="${product.price}"></span> грн</p>
-        <a href="#" class="btn-buy">Купити</a>
-      </div>
-    </div>
-    <div class="product-specifications">
+    <div class="product-info">
       <!-- Processor specific details -->
       <div th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
         <p><strong>Бренд: </strong><span th:text="${product.brand}"></span></p>
@@ -51,6 +41,12 @@
         <p><strong>Тип екрану: </strong><span th:text="${product.screenType}"></span></p>
         <p><strong>Ємність SSD: </strong><span th:text="${product.ssdCapacity}"></span></p>
       </div>
+    </div>
+    <div class="product-image-container">
+      <img th:src="@{${product.photoUrl}}" alt="Product Image">
+      <h3 th:text="${product.name}">Product Name</h3>
+      <p class="price"><strong>Ціна: </strong><span th:text="${product.price}"></span> грн</p>
+      <a href="#" class="btn-buy">Купити</a>
     </div>
   </div>
 </main>

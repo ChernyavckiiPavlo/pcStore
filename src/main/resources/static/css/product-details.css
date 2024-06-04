@@ -53,38 +53,53 @@ main {
 
 .product-details {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.product-header {
-    display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: flex-start; /* Выровнять блоки по верхнему краю */
 }
 
-.product-image img {
-    max-width: 300px;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.product-info {
+    flex: 1;
+    max-width: 60%;
 }
 
-.product-price {
+.product-specifications p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.product-specifications strong {
+    font-weight: bold;
+}
+
+.product-image-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Выровнять по левому краю */
+    width: 300px; /* Ширина блока с фото */
 }
 
-.product-price p {
+.product-image-container img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px; /* Увеличиваем отступ */
+    object-fit: contain; /* Сохраняем пропорции */
+}
+
+.product-image-container h3 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.product-image-container .price {
     font-size: 24px;
     font-weight: bold;
     color: #007bff;
     margin: 10px 0;
 }
 
-.btn-buy {
+.product-image-container .btn-buy {
     display: inline-block;
     padding: 15px 30px;
     background-color: #28a745;
@@ -96,21 +111,8 @@ main {
     font-weight: bold;
 }
 
-.btn-buy:hover {
+.product-image-container .btn-buy:hover {
     background-color: #218838;
-}
-
-.product-specifications {
-    width: 100%;
-}
-
-.product-specifications p {
-    font-size: 18px;
-    margin: 5px 0;
-}
-
-.product-specifications strong {
-    font-weight: bold;
 }
 
 footer {
