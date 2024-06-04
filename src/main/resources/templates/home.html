@@ -8,8 +8,14 @@
 <body>
 <header>
   <div class="logo">PC STORE</div>
-  <div class="logo">Ласкаво просимо на наш сайт</div>
+  <div class="welcome">Ласкаво просимо на наш сайт</div>
   <nav>
+    <div class="search-container">
+      <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Пошук товарів...">
+        <button type="submit">Шукати</button>
+      </form>
+    </div>
     <ul>
       <li><a href="/home">Головна</a></li>
       <li><a href="/catalog">Каталог</a></li>
@@ -18,12 +24,6 @@
   </nav>
 </header>
 <main>
-  <div class="search-container">
-    <form action="/search" method="get">
-      <input type="text" name="query" placeholder="Пошук товарів...">
-      <button type="submit">Шукати</button>
-    </form>
-  </div>
   <h2>Популярні товари</h2>
   <div class="products-container">
     <div th:each="product : ${products}" class="product">
@@ -37,7 +37,7 @@
   </div>
 </main>
 <footer>
-  <p>© 2023 Your Company. All rights reserved.</p>
+  <p>&copy; 2023 Your Company. All rights reserved.</p>
 </footer>
 </body>
 </html>

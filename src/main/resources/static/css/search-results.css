@@ -16,10 +16,15 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
+header nav {
+    display: flex;
+    align-items: center;
+}
 header .logo {
     font-size: 32px; /* Увеличиваем размер логотипа */
     font-weight: bold;
+    margin-right: 20px; /* Отступ справа */
+
 }
 
 header nav ul {
@@ -28,6 +33,7 @@ header nav ul {
     padding: 0;
     display: flex;
     gap: 30px; /* Увеличиваем расстояние между пунктами меню */
+    align-items: center;
 }
 
 header nav ul li {
@@ -54,8 +60,9 @@ main {
 
 .search-container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 40px; /* Увеличиваем отступ */
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Увеличиваем отступ справа */
 }
 
 .search-container input[type="text"] {
