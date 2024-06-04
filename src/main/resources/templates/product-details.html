@@ -20,27 +20,65 @@
 <main>
   <div class="product-details">
     <div class="product-info">
-      <!-- Processor specific details -->
-      <div th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
-        <p><strong>Бренд: </strong><span th:text="${product.brand}"></span></p>
-        <p><strong>Кількість ядер: </strong><span th:text="${product.cores}"></span></p>
-        <p><strong>Частота: </strong><span th:text="${product.frequency}"></span></p>
-        <p><strong>Тип роз'єма: </strong><span th:text="${product.socketType}"></span></p>
-        <p><strong>Гарантія: </strong><span th:text="${product.warrantyMonths}"></span> місяців</p>
-        <p><strong>Країна виробництва: </strong><span th:text="${product.countryOfOrigin}"></span></p>
-      </div>
+      <table class="product-specifications">
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
+          <th>Бренд</th>
+          <td th:text="${product.brand}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
+          <th>Кількість ядер</th>
+          <td th:text="${product.cores}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
+          <th>Частота</th>
+          <td th:text="${product.frequency}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
+          <th>Тип роз'єма</th>
+          <td th:text="${product.socketType}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
+          <th>Гарантія</th>
+          <td th:text="${product.warrantyMonths}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Processor)}">
+          <th>Країна виробництва</th>
+          <td th:text="${product.countryOfOrigin}"></td>
+        </tr>
 
-      <!-- Laptop specific details -->
-      <div th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
-        <p><strong>GPU: </strong><span th:text="${product.gpu}"></span></p>
-        <p><strong>Процесор: </strong><span th:text="${product.processorName}"></span></p>
-        <p><strong>RAM: </strong><span th:text="${product.ram}"></span></p>
-        <p><strong>Частота оновлення: </strong><span th:text="${product.refreshRate}"></span></p>
-        <p><strong>Роздільна здатність: </strong><span th:text="${product.resolution}"></span></p>
-        <p><strong>Діагональ екрану: </strong><span th:text="${product.screenDiagonal}"></span></p>
-        <p><strong>Тип екрану: </strong><span th:text="${product.screenType}"></span></p>
-        <p><strong>Ємність SSD: </strong><span th:text="${product.ssdCapacity}"></span></p>
-      </div>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>GPU</th>
+          <td th:text="${product.gpu}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>Процесор</th>
+          <td th:text="${product.processorName}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>RAM</th>
+          <td th:text="${product.ram}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>Частота оновлення</th>
+          <td th:text="${product.refreshRate}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>Роздільна здатність</th>
+          <td th:text="${product.resolution}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>Діагональ екрану</th>
+          <td th:text="${product.screenDiagonal}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>Тип екрану</th>
+          <td th:text="${product.screenType}"></td>
+        </tr>
+        <tr th:if="${product instanceof T(com.example.computerpartsshop.model.Laptop)}">
+          <th>Ємність SSD</th>
+          <td th:text="${product.ssdCapacity}"></td>
+        </tr>
+      </table>
     </div>
     <div class="product-image-container">
       <img th:src="@{${product.photoUrl}}" alt="Product Image">

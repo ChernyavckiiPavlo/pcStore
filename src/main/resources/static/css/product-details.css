@@ -62,13 +62,28 @@ main {
     max-width: 60%;
 }
 
-.product-specifications p {
-    font-size: 18px;
-    margin: 5px 0;
+.product-specifications {
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-.product-specifications strong {
+.product-specifications th, .product-specifications td {
+    padding: 8px;
+    border-bottom: 1px dotted #ddd;
+}
+
+.product-specifications th {
+    text-align: left;
+    width: 40%;
     font-weight: bold;
+    color: #333;
+}
+
+.product-specifications td {
+    text-align: right;
+    width: 60%;
+    color: #007bff;
 }
 
 .product-image-container {
@@ -76,6 +91,7 @@ main {
     flex-direction: column;
     align-items: flex-start; /* Выровнять по левому краю */
     width: 300px; /* Ширина блока с фото */
+    margin-left: auto;
 }
 
 .product-image-container img {
