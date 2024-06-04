@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Корзина</title>
+  <link rel="stylesheet" th:href="@{/css/cart.css}" />
+</head>
+<body>
+<header>
+  <div class="logo">PC STORE</div>
+  <nav>
+    <ul>
+      <li><a href="/home">Головна</a></li>
+      <li><a href="/catalog">Каталог</a></li>
+      <li><a href="/cart">Корзина</a></li>
+      <li><a href="/login">Вийти</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h1>Корзина</h1>
+  <div class="cart-items">
+    <table>
+      <thead>
+      <tr>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Действия</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="cartItem : ${cartItems}">
+        <td th:text="${cartItem.product.name}">Product Name</td>
+        <td th:text="${cartItem.quantity}">Quantity</td>
+        <td th:text="${cartItem.product.price * cartItem.quantity}">Price</td>
+        <td>
+          <form th:action="@{/cart/remove/{id}(id=${cartItem.id})}" method="post">
+            <button type="submit">Удалить</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cart-actions">
+    <form th:action="@{/cart/clear}" method="post">
+      <button type="submit">Очистить корзину</button>
+    </form>
+    <form th:action="@{/order/checkout}" method="get">
+      <button type="submit">Оформити замовлення</button>
+    </form>
+  </div>
+</main>
+<footer>
+  <p>&copy; 2024 Your Company. All rights reserved.</p>
+</footer>
+</body>
+</html>

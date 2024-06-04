@@ -18,6 +18,7 @@
     <ul>
       <li><a href="/home">Головна</a></li>
       <li><a href="/catalog">Каталог</a></li>
+      <li><a href="/cart">Корзина</a></li>
       <li><a href="/login">Вийти</a></li>
     </ul>
   </nav>
@@ -31,7 +32,9 @@
       <h3><a th:href="@{/products/details/{id}(id=${product.id})}" th:text="${product.name}">Product Name</a></h3>
       <div class="price-buy-container">
         <p class="price" th:text="${product.price}">Product Price</p>
-        <a href="#" class="btn-buy">Купити</a>
+        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+          <button type="submit" class="btn-buy">Купити</button>
+        </form>
       </div>
     </div>
   </div>
