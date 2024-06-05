@@ -1,5 +1,6 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif; /* Используем красивый шрифт */
+    font-size: 18px; /* Увеличиваем общий размер шрифта */
     margin: 0;
     padding: 0;
     display: flex;
@@ -17,8 +18,9 @@ header {
 }
 
 header .logo {
-    font-size: 32px;
+    font-size: 32px; /* Увеличиваем размер логотипа */
     font-weight: bold;
+    margin-right: 20px; /* Отступ справа */
 }
 
 header nav {
@@ -31,7 +33,8 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px;
+    gap: 30px; /* Увеличиваем расстояние между пунктами меню */
+    align-items: center;
 }
 
 header nav ul li {
@@ -52,27 +55,30 @@ header nav ul li a:hover {
 
 .search-container {
     display: flex;
+    display: flex;
     align-items: center;
+    margin-right: 20px; /* Увеличиваем отступ справа */
 }
 
 .search-container input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px; /* Увеличиваем отступы */
+    width: 400px; /* Увеличиваем ширину поля поиска */
+    height: 10px;
+    margin-right: 15px; /* Увеличиваем отступ справа */
     border: 1px solid #ddd;
-    border-radius: 15px 0 0 15px;
-    width: 300px;
-    height: 40px;
+    border-radius: 15px;
+    font-size: 18px; /* Увеличиваем размер шрифта */
 }
 
 .search-container button {
-    padding: 10px 20px;
+    padding: 10px 20px; /* Увеличиваем отступы */
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 0 15px 15px 0;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 16px;
-    height: 40px;
+    transition: background-color 0.3s;
+    font-size: 18px; /* Увеличиваем размер шрифта */
 }
 
 .search-container button:hover {
