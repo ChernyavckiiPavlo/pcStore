@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Оформление заказа</title>
+  <title>Оформлення замовлення</title>
   <link rel="stylesheet" th:href="@{/css/cart.css}" />
 </head>
 <body>
@@ -9,32 +9,32 @@
   <div class="logo">PC STORE</div>
   <nav>
     <ul>
-      <li><a href="/home">Головна</a></li>
-      <li><a href="/catalog">Каталог</a></li>
-      <li><a href="/cart">Корзина</a></li>
-      <li><a href="/login">Вийти</a></li>
+      <li><a th:href="@{/home}">Головна</a></li>
+      <li><a th:href="@{/catalog}">Каталог</a></li>
+      <li><a th:href="@{/cart}">Корзина</a></li>
+      <li><a th:href="@{/login}">Вийти</a></li>
     </ul>
   </nav>
 </header>
 <main>
-  <h1>Оформление заказа</h1>
-  <form th:action="@{/order/checkout}" method="post">
-    <input type="hidden" name="userId" th:value="${order.userId}" />
+  <h1>Оформлення замовлення</h1>
+  <form th:action="@{/order/checkout}" method="post" th:object="${order}">
+    <input type="hidden" th:field="*{user.id}" />
     <div>
-      <label for="name">Имя:</label>
-      <input type="text" id="name" name="customerName" required>
+      <label for="name">Ім'я:</label>
+      <input type="text" id="name" th:field="*{customerName}" required>
     </div>
     <div>
-      <label for="address">Адрес:</label>
-      <input type="text" id="address" name="customerAddress" required>
+      <label for="address">Адреса:</label>
+      <input type="text" id="address" th:field="*{customerAddress}" required>
     </div>
     <div>
       <label for="email">Email:</label>
-      <input type="email" id="email" name="customerEmail" required>
+      <input type="email" id="email" th:field="*{customerEmail}" required>
     </div>
     <div>
       <label for="phone">Телефон:</label>
-      <input type="tel" id="phone" name="customerPhone" required>
+      <input type="tel" id="phone" th:field="*{customerPhone}" required>
     </div>
     <button type="submit">Оформити замовлення</button>
   </form>

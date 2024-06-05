@@ -3,9 +3,11 @@ package com.example.computerpartsshop.service;
 import com.example.computerpartsshop.model.CartItem;
 import com.example.computerpartsshop.model.Order;
 import com.example.computerpartsshop.model.OrderItem;
+import com.example.computerpartsshop.model.User;
 import com.example.computerpartsshop.repository.CartItemRepository;
 import com.example.computerpartsshop.repository.OrderItemRepository;
 import com.example.computerpartsshop.repository.OrderRepository;
+import com.example.computerpartsshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class OrderService {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Transactional
     public Order createOrder(String customerName, String customerAddress, String customerEmail, String customerPhone, Long userId) {
         Order order = new Order();
@@ -37,7 +42,9 @@ public class OrderService {
         order.setCustomerAddress(customerAddress);
         order.setCustomerEmail(customerEmail);
         order.setCustomerPhone(customerPhone);
-        order.setUserId(userId);
+
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + userId));
+        order.setUser(user);
 
         List<CartItem> cartItems = cartItemRepository.findAll();
         for (CartItem cartItem : cartItems) {

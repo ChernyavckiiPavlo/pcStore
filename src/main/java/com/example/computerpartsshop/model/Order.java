@@ -19,8 +19,9 @@ public class Order {
     private String customerEmail;
     private String customerPhone;
 
-    // Добавляем id пользователя
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     // Getters and Setters
     public Long getId() {
@@ -71,11 +72,11 @@ public class Order {
         this.customerPhone = customerPhone;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

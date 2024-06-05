@@ -23,15 +23,16 @@ public class OrderController {
         Order order = new Order();
         User currentUser = userService.getCurrentUser();
         if (currentUser != null) {
-            order.setUserId(currentUser.getId());
+            order.setUser(currentUser);
         }
         model.addAttribute("order", order);
+        model.addAttribute("user", currentUser); // Добавлено для передачи user в шаблон
         return "checkout";
     }
 
     @PostMapping("/checkout")
     public String processCheckout(@ModelAttribute Order order) {
-        orderService.createOrder(order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone(), order.getUserId());
+        orderService.createOrder(order.getCustomerName(), order.getCustomerAddress(), order.getCustomerEmail(), order.getCustomerPhone(), order.getUser().getId());
         return "redirect:/order/confirmation";
     }
 
