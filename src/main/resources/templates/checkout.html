@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Оформлення замовлення</title>
-  <link rel="stylesheet" th:href="@{/css/cart.css}" />
+  <link rel="stylesheet" th:href="@{/css/checkout.css}" />
 </head>
 <body>
 <header>
@@ -20,23 +20,23 @@
   <h1>Оформлення замовлення</h1>
   <form th:action="@{/order/checkout}" method="post" th:object="${order}">
     <input type="hidden" th:field="*{user.id}" />
-    <div>
+    <div class="form-group">
       <label for="name">Ім'я:</label>
       <input type="text" id="name" th:field="*{customerName}" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="address">Адреса:</label>
       <input type="text" id="address" th:field="*{customerAddress}" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" id="email" th:field="*{customerEmail}" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="phone">Телефон:</label>
       <input type="tel" id="phone" th:field="*{customerPhone}" required>
     </div>
-    <button type="submit">Оформити замовлення</button>
+    <button type="submit" class="btn-submit">Оформити замовлення</button>
   </form>
 </main>
 <footer>
