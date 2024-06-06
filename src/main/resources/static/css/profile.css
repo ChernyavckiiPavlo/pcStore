@@ -1,5 +1,6 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
+    font-size: 18px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -19,8 +20,38 @@ header {
 header .logo {
     font-size: 32px;
     font-weight: bold;
+    margin-right: 20px;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Отступ справа */
 }
 
+.search-container input[type="text"] {
+    padding: 15px; /* Увеличиваем отступы */
+    width: 400px; /* Увеличиваем ширину поля поиска */
+    height: 10px;
+    margin-right: 15px; /* Увеличиваем отступ справа */
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 18px; /* Увеличиваем размер шрифта */
+}
+
+.search-container button {
+    padding: 10px 20px; /* Увеличиваем отступы */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 18px; /* Увеличиваем размер шрифта */
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
 header nav {
     display: flex;
     align-items: center;
@@ -57,9 +88,8 @@ main {
     background-color: #f8f9fa;
 }
 
-.user-info p {
-    font-size: 20px;
-    margin: 10px 0;
+.user-info {
+    margin-bottom: 20px;
 }
 
 .orders {
@@ -67,71 +97,40 @@ main {
 }
 
 .order {
-    background-color: #fff;
+    border: 1px solid #ddd;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    background-color: #fff;
 }
 
-.order h3 {
-    margin: 0 0 10px;
+.cart-items table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-
-
-.order-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+.cart-items th, .cart-items td {
     border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 10px;
+    text-align: left;
 }
 
-.product-details {
-    flex: 1;
-}
-
-.product-details p {
-    margin: 5px 0;
-}
-
-.product-details a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.product-details a:hover {
-    text-decoration: underline;
+.cart-items th {
+    background-color: #f1f1f1;
+    font-weight: bold;
 }
 
 .product-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin-left: 20px;
-}
-header nav ul li a .cart-icon {
-    width: 50px; /* Размер иконки */
-    height: 50px; /* Размер иконки */
-    display: inline-block;
-    vertical-align: middle;
-    background-size: contain;
-    background-repeat: no-repeat;
+    width: 100px;
+    height: auto;
 }
 
-header nav ul li a:hover .cart-icon {
-    background-color: transparent; /* Убирает фон при наведении */
-    width: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
-    height: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
-}
 footer {
     background-color: #343a40;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
     position: relative;
     width: 100%;
     font-size: 18px;

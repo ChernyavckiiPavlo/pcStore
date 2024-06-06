@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Личный кабинет</title>
+  <title>Особистий кабінет</title>
   <link rel="stylesheet" th:href="@{/css/profile.css}" />
 </head>
 <body>
 <header>
   <div class="logo">PC STORE</div>
   <nav>
+    <div class="search-container">
+      <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Пошук товарів...">
+        <button type="submit">Шукати</button>
+      </form>
+    </div>
     <ul>
       <li><a href="/home">Головна</a></li>
       <li><a href="/catalog">Каталог</a></li>
-      <li> <a th:href="@{/cart}">
-        <img src="/images/cart.png" alt="Корзина" class="cart-icon">
-      </a>
-      </li>
       <li><a href="/profile">Особистий кабінет</a></li>
       <li><a href="/login">Вийти</a></li>
     </ul>
@@ -23,26 +25,36 @@
 <main>
   <h1>Особистий кабінет</h1>
   <div class="user-info">
-    <p>Ім'я: <span th:text="${user.username}"></span></p>
-    <p>Email: <span th:text="${user.email}"></span></p>
+    <p>Ім'я користувача: <span th:text="${user.username}"></span></p>
+    <p>Email клієнта: <span th:text="${user.email}"></span></p>
   </div>
   <h2>Ваші замовлення</h2>
   <div class="orders">
     <div th:each="order : ${orders}" class="order">
       <h3>Замовлення №<span th:text="${order.id}"></span></h3>
-      <p>Адреса: <span th:text="${order.customerAddress}"></span></p>
-      <p>Email: <span th:text="${order.customerEmail}"></span></p>
-      <p>Ім'я: <span th:text="${order.customerName}"></span></p>
-      <p>Номер телефону: <span th:text="${order.customerPhone}"></span></p>
-      <div class="order-items">
-        <div th:each="item : ${order.orderItems}" class="order-item">
-          <div class="product-details">
-            <p>Назва товару: <a th:href="@{/products/details/{id}(id=${item.product.id})}" th:text="${item.product.name}"></a></p>
-            <p>Кількість: <span th:text="${item.quantity}"></span></p>
-            <p>Ціна: <span th:text="${item.product.price}"></span></p>
-          </div>
-          <img th:src="@{${item.product.photoUrl}}" alt="Product Image" class="product-image"/>
-        </div>
+      <p>Ім'я клієнта: <span th:text="${order.customerName}"></span></p>
+      <p>Email клієнта: <span th:text="${order.customerEmail}"></span></p>
+      <p>Телефон клієнта: <span th:text="${order.customerPhone}"></span></p>
+      <p>Адреса клієнта: <span th:text="${order.customerAddress}"></span></p>
+      <div class="cart-items">
+        <table>
+          <thead>
+          <tr>
+            <th>Товар</th>
+            <th>Кількість</th>
+            <th>Ціна</th>
+            <th>Фото</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="item : ${order.orderItems}">
+            <td><a th:href="@{/products/details/{id}(id=${item.product.id})}" th:text="${item.product.name}"></a></td>
+            <td th:text="${item.quantity}">Quantity</td>
+            <td th:text="${item.product.price * item.quantity}">Price</td>
+            <td><img th:src="@{${item.product.photoUrl}}" alt="Product Image" class="product-image"/></td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
