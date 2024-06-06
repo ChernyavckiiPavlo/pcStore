@@ -3,8 +3,10 @@ package com.example.computerpartsshop.controller;
 import com.example.computerpartsshop.model.User;
 import com.example.computerpartsshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +32,22 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user) {
-        userService.saveUser(user);
+    public String registerUser(@ModelAttribute("user") User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "register";
+        }
+
+        try {
+            userService.saveUser(user);
+        } catch (DataIntegrityViolationException e) {
+            if (e.getMessage().contains("users.username")) {
+                model.addAttribute("usernameError", "Username is already taken.");
+            } else if (e.getMessage().contains("users.email")) {
+                model.addAttribute("emailError", "Email is already registered.");
+            }
+            return "register";
+        }
+
         return "redirect:/login";
     }
 }
