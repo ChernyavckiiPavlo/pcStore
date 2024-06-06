@@ -10,6 +10,7 @@ import com.example.computerpartsshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +26,13 @@ public class CartService {
 
     public List<CartItem> getCartItems(User user) {
         Cart cart = cartRepository.findByUser(user);
-        return cart != null ? cart.getCartItems() : null;
+        if (cart == null) {
+            cart = new Cart();
+            cart.setUser(user);
+            cartRepository.save(cart);
+            return new ArrayList<>(); // Возвращаем пустой список, если корзина только что создана
+        }
+        return cart.getCartItems();
     }
 
     public void addItemToCart(User user, Long productId, int quantity) {
