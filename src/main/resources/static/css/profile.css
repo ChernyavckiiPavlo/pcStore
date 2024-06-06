@@ -81,7 +81,20 @@ header nav ul li a {
 header nav ul li a:hover {
     background-color: #f1f1f1;
 }
+header nav ul li a .cart-icon {
+    width: 50px; /* Размер иконки */
+    height: 50px; /* Размер иконки */
+    display: inline-block;
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
+header nav ul li a:hover .cart-icon {
+    background-color: transparent; /* Убирает фон при наведении */
+    width: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
+    height: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
+}
 main {
     flex: 1;
     padding: 40px;
