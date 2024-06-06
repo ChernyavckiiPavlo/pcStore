@@ -44,19 +44,5 @@
 <footer>
   <p>© 2023 Your Company. All rights reserved.</p>
 </footer>
-
-<script>
-  function addToCart(productId) {
-    fetch(`/cart/add/${productId}`, {
-      method: 'POST'
-    }).then(response => {
-      if (response.ok) {
-        alert('Товар додано до корзини');
-      } else {
-        alert('Не вдалося додати товар до корзини');
-      }
-    });
-  }
-</script>
 </body>
 </html>
