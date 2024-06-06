@@ -5,6 +5,7 @@ import com.example.computerpartsshop.model.User;
 import com.example.computerpartsshop.service.CartService;
 import com.example.computerpartsshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,10 +23,11 @@ public class CartController {
     private UserService userService;
 
     @PostMapping("/add/{productId}")
+    @ResponseBody
     public String addToCart(@PathVariable("productId") Long productId, @RequestParam("quantity") int quantity) {
         User user = userService.getCurrentUser();
         cartService.addItemToCart(user, productId, quantity);
-        return "redirect:/cart";
+        return "success";
     }
 
     @GetMapping

@@ -4,6 +4,7 @@
   <title>Product Details</title>
   <link rel="stylesheet" th:href="@{/css/product-details.css}" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
@@ -94,7 +95,7 @@
       <img th:src="@{${product.photoUrl}}" alt="Product Image">
       <h3 th:text="${product.name}">Product Name</h3>
       <p class="price"><strong>Ціна: </strong><span th:text="${product.price}"></span> грн</p>
-      <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+      <form class="add-to-cart-form" th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
         <input type="hidden" name="quantity" value="1">
         <button type="submit" class="btn-buy">Купити</button>
       </form>
@@ -104,5 +105,31 @@
 <footer>
   <p>&copy; 2024 Комп'ютерні запчастини. Всі права захищені.</p>
 </footer>
+<script>
+  $(document).ready(function() {
+    $('.add-to-cart-form').on('submit', function(event) {
+      event.preventDefault();
+      var form = $(this);
+      $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serialize(),
+        success: function(response) {
+          if(response === "success") {
+            alert('Товар добавлен в корзину!');
+          } else {
+            alert('Ошибка при добавлении товара в корзину.');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error(xhr);
+          console.error(status);
+          console.error(error);
+          alert('Ошибка при добавлении товара в корзину.');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

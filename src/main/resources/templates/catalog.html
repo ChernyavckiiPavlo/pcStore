@@ -4,6 +4,7 @@
   <title>Каталог</title>
   <link rel="stylesheet" th:href="@{/css/catalog.css}" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Подключаем шрифт -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
@@ -18,17 +19,17 @@
     <ul>
       <li><a href="/home">Головна</a></li>
       <li><a href="/catalog">Каталог</a></li>
-      <li> <a th:href="@{/cart}">
-        <img src="/images/cart.png" alt="Корзина" class="cart-icon">
-      </a>
+      <li>
+        <a th:href="@{/cart}">
+          <img src="/images/cart.png" alt="Корзина" class="cart-icon">
+        </a>
       </li>
       <li><a href="/profile">Особистий кабінет</a></li>
-      <li><a th:href="@{/login}">Вийти</a></li>
+      <li><a href="/login">Вийти</a></li>
     </ul>
   </nav>
 </header>
 <main>
-
   <h1>Каталог товарів</h1>
   <div class="products-container">
     <div th:each="product : ${products}" class="product">
@@ -36,7 +37,7 @@
       <h3><a th:href="@{/products/details/{id}(id=${product.id})}" th:text="${product.name}">Product Name</a></h3>
       <div class="price-buy-container">
         <p class="price" th:text="${product.price}">Product Price</p>
-        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+        <form class="add-to-cart-form" th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
           <input type="hidden" name="quantity" value="1">
           <button type="submit" class="btn-buy">Купити</button>
         </form>
@@ -47,5 +48,31 @@
 <footer>
   <p>© 2023 Your Company. All rights reserved.</p>
 </footer>
+<script>
+  $(document).ready(function() {
+    $('.add-to-cart-form').on('submit', function(event) {
+      event.preventDefault();
+      var form = $(this);
+      $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serialize(),
+        success: function(response) {
+          if(response === "success") {
+            alert('Товар добавлен в корзину!');
+          } else {
+            alert('Ошибка при добавлении товара в корзину.');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error(xhr);
+          console.error(status);
+          console.error(error);
+          alert('Ошибка при добавлении товара в корзину.');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
