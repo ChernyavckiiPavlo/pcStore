@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class CartService {
@@ -38,10 +37,10 @@ public class CartService {
         }
 
         Product product = productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("Invalid product ID"));
-        CartItem cartItem = new CartItem();
+        CartItem cartItem = cartItemRepository.findByCartAndProduct(cart, product).orElse(new CartItem());
         cartItem.setCart(cart);
         cartItem.setProduct(product);
-        cartItem.setQuantity(quantity);
+        cartItem.setQuantity(cartItem.getQuantity() + quantity);
 
         cartItemRepository.save(cartItem);
         cart.getCartItems().add(cartItem);
@@ -51,8 +50,25 @@ public class CartService {
     public void clearCart(User user) {
         Cart cart = cartRepository.findByUser(user);
         if (cart != null) {
+            cartItemRepository.deleteAll(cart.getCartItems());
             cart.getCartItems().clear();
             cartRepository.save(cart);
         }
+    }
+
+    public void updateCartItem(User user, Long cartItemId, int quantity) {
+        Cart cart = cartRepository.findByUser(user);
+        if (cart != null) {
+            CartItem cartItem = cartItemRepository.findById(cartItemId)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid cart item ID"));
+            cartItem.setQuantity(quantity);
+            cartItemRepository.save(cartItem);
+        }
+    }
+
+    public void removeCartItem(Long cartItemId) {
+        CartItem cartItem = cartItemRepository.findById(cartItemId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid cart item ID"));
+        cartItemRepository.delete(cartItem);
     }
 }

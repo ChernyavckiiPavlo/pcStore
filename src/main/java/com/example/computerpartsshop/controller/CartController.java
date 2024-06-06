@@ -42,4 +42,17 @@ public class CartController {
         cartService.clearCart(user);
         return "redirect:/cart";
     }
+
+    @PostMapping("/update")
+    public String updateCartItem(@RequestParam("cartItemId") Long cartItemId, @RequestParam("quantity") int quantity) {
+        User user = userService.getCurrentUser();
+        cartService.updateCartItem(user, cartItemId, quantity);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/remove/{id}")
+    public String removeCartItem(@PathVariable("id") Long cartItemId) {
+        cartService.removeCartItem(cartItemId);
+        return "redirect:/cart";
+    }
 }

@@ -17,11 +17,9 @@
     <ul>
       <li><a href="/home">Головна</a></li>
       <li><a href="/catalog">Каталог</a></li>
-      <li> <a th:href="@{/cart}">
-        <img src="/images/cart.png" alt="Корзина" class="cart-icon">
-      </a>
+      <li><a th:href="@{/cart}"><img src="/images/cart.png" alt="Корзина" class="cart-icon"></a></li>
       <li><a href="/profile">Особистий кабінет</a></li>
-      </li><li><a href="/login">Вийти</a></li>
+      <li><a href="/login">Вийти</a></li>
     </ul>
   </nav>
 </header>
@@ -40,7 +38,12 @@
       <tbody>
       <tr th:each="cartItem : ${cartItems}">
         <td th:text="${cartItem.product.name}">Product Name</td>
-        <td th:text="${cartItem.quantity}">Quantity</td>
+        <td>
+          <form th:action="@{/cart/update}" method="post">
+            <input type="hidden" name="cartItemId" th:value="${cartItem.id}" />
+            <input type="number" name="quantity" th:value="${cartItem.quantity}" min="1" onchange="this.form.submit()" />
+          </form>
+        </td>
         <td th:text="${cartItem.product.price * cartItem.quantity}">Price</td>
         <td>
           <form th:action="@{/cart/remove/{id}(id=${cartItem.id})}" method="post">
