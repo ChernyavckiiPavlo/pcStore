@@ -32,6 +32,7 @@
   <div class="orders">
     <div th:each="order : ${orders}" class="order">
       <h3>Замовлення №<span th:text="${order.id}"></span></h3>
+      <p>Час створення замовлення: <span th:text="${#temporals.format(order.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
       <p>Ім'я клієнта: <span th:text="${order.customerName}"></span></p>
       <p>Email клієнта: <span th:text="${order.customerEmail}"></span></p>
       <p>Телефон клієнта: <span th:text="${order.customerPhone}"></span></p>

@@ -51,6 +51,6 @@ public class OrderService {
         return savedOrder;
     }
     public List<Order> getOrdersByUser(User user) {
-        return orderRepository.findByUser(user);
+        return orderRepository.findByUserOrderByCreatedAtDesc(user);
     }
 }

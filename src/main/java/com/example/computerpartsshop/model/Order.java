@@ -1,6 +1,10 @@
 package com.example.computerpartsshop.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,10 +25,25 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+
+
+
+    @Column( updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderItem> orderItems = new HashSet<>();
 
-    // getters and setters
+    public LocalDateTime  getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime  createdAt) {
+        this.createdAt = createdAt;
+    }
+// getters and setters
 
     public Long getId() {
         return id;
