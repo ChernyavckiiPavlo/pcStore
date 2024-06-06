@@ -3,6 +3,7 @@ package com.example.computerpartsshop.model;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
@@ -39,7 +40,18 @@ public class Order {
     public LocalDateTime  getCreatedAt() {
         return createdAt;
     }
+    @Column(nullable = false)
+    private BigDecimal totalPrice;
 
+    // гетери та сетери
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
     public void setCreatedAt(LocalDateTime  createdAt) {
         this.createdAt = createdAt;
     }

@@ -1,12 +1,21 @@
 package com.example.computerpartsshop.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -15,6 +24,7 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    private BigDecimal price; // Добавляем поле price
 
     private int quantity;
 
