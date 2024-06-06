@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService implements UserDetailsService {
 
@@ -58,5 +60,10 @@ public class UserService implements UserDetailsService {
                 .credentialsExpired(false)
                 .disabled(!user.isEnabled())
                 .build();
+    }
+
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

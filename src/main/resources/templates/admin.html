@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" th:href="@{/css/admin.css}" />
+</head>
+<body>
+<header>
+  <div class="logo">PC STORE - Admin Panel</div>
+  <nav>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/admin">Admin</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h1>All Orders</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Name</th>
+      <th>Customer Email</th>
+      <th>Customer Phone</th>
+      <th>Total Price</th>
+      <th>Order Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+      <td th:text="${order.id}"></td>
+      <td th:text="${order.customerName}"></td>
+      <td th:text="${order.customerEmail}"></td>
+      <td th:text="${order.customerPhone}"></td>
+      <td th:text="${order.totalPrice}"></td>
+      <td th:text="${order.createdAt}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h1>All Users</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.role}"></td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+<footer>
+  <p>&copy; 2023 Your Company. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -21,11 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login", "/register", "/home", "/css/**", "/js/**", "/cart","/profile","/images/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/home", "/catalog", "/profile", "/cart/**").authenticated()
+                .antMatchers("/home","/catalog", "/register", "/login").permitAll()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).permitAll()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/default", true)
+                .permitAll()
                 .and()
-                .logout().permitAll();
+                .logout()
+                .permitAll();
     }
+
 }
