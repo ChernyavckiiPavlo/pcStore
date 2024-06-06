@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Корзина</title>
+  <title>Кошик</title>
   <link rel="stylesheet" th:href="@{/css/cart.css}" />
 </head>
 <body>
@@ -24,15 +24,15 @@
   </nav>
 </header>
 <main>
-  <h1>Корзина</h1>
+  <h1>Кошик</h1>
   <div class="cart-items">
     <table>
       <thead>
       <tr>
         <th>Товар</th>
-        <th>Количество</th>
-        <th>Цена</th>
-        <th>Действия</th>
+        <th>Кількість</th>
+        <th>Ціна</th>
+        <th>Дія</th>
       </tr>
       </thead>
       <tbody>
@@ -47,7 +47,7 @@
         <td th:text="${cartItem.product.price * cartItem.quantity}">Price</td>
         <td>
           <form th:action="@{/cart/remove/{id}(id=${cartItem.id})}" method="post">
-            <button type="submit" class="btn-delete">Удалить</button>
+            <button type="submit" class="btn-delete">Видалити</button>
           </form>
         </td>
       </tr>
@@ -56,7 +56,7 @@
   </div>
   <div class="cart-actions">
     <form th:action="@{/cart/clear}" method="post">
-      <button type="submit" class="btn-clear">Очистить корзину</button>
+      <button type="submit" class="btn-clear">Очистити кошик</button>
     </form>
     <form th:action="@{/order/checkout}" method="get">
       <button type="submit" class="btn-checkout">Оформити замовлення</button>

@@ -5,6 +5,7 @@
   <link rel="stylesheet" th:href="@{/css/catalog.css}" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Подключаем шрифт -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Подключаем SweetAlert2 -->
 </head>
 <body>
 <header>
@@ -59,16 +60,28 @@
         data: form.serialize(),
         success: function(response) {
           if(response === "success") {
-            alert('Товар добавлен в корзину!');
+            Swal.fire({
+              title: 'Успіх!',
+              text: 'Товар успішно додано до кошику',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
           } else {
-            alert('Ошибка при добавлении товара в корзину.');
+            Swal.fire({
+              title: 'Помилка!',
+              text: 'Сталася помилка при додаванні товару до кошику.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
           }
         },
         error: function(xhr, status, error) {
-          console.error(xhr);
-          console.error(status);
-          console.error(error);
-          alert('Ошибка при добавлении товара в корзину.');
+          Swal.fire({
+            title: 'Помилка!',
+            text: 'Сталася помилка при додаванні товару до кошику.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
         }
       });
     });

@@ -23,11 +23,10 @@ public class CartController {
     private UserService userService;
 
     @PostMapping("/add/{productId}")
-    @ResponseBody
-    public String addToCart(@PathVariable("productId") Long productId, @RequestParam("quantity") int quantity) {
+    public ResponseEntity<String> addToCart(@PathVariable("productId") Long productId, @RequestParam("quantity") int quantity) {
         User user = userService.getCurrentUser();
         cartService.addItemToCart(user, productId, quantity);
-        return "success";
+        return ResponseEntity.ok("success");
     }
 
     @GetMapping
