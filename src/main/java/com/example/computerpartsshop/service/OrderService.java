@@ -50,4 +50,7 @@ public class OrderService {
         cartService.clearCart(user); // Очистка корзины пользователя
         return savedOrder;
     }
+    public List<Order> getOrdersByUser(User user) {
+        return orderRepository.findByUser(user);
+    }
 }
