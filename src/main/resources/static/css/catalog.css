@@ -1,6 +1,6 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif; /* Используем красивый шрифт */
-    font-size: 18px; /* Увеличиваем общий размер шрифта */
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 18px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,30 +11,34 @@ body {
 
 header {
     background-color: #ffc107;
-    padding: 20px; /* Увеличиваем отступы */
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: calc(100% - 17px); /* Уменьшаем ширину для учета полосы прокрутки */
+    top: 0;
+    z-index: 1000;
 }
+
 header nav {
     display: flex;
     align-items: center;
 }
-header .logo {
-    font-size: 32px; /* Увеличиваем размер логотипа */
-    font-weight: bold;
-    margin-right: 20px; /* Отступ справа */
-}
 
+header .logo {
+    font-size: 32px;
+    font-weight: bold;
+    margin-right: 20px;
+}
 
 header nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px; /* Увеличиваем расстояние между пунктами меню */
+    gap: 30px;
     align-items: center;
-
 }
 
 header nav ul li {
@@ -44,63 +48,63 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: #000;
-    padding: 10px 20px; /* Увеличиваем отступы */
+    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 20px; /* Увеличиваем размер шрифта */
+    font-size: 20px;
 }
 
 header nav ul li a:hover {
     background-color: #f1f1f1;
 }
 
+main {
+    flex: 1;
+    padding: 40px;
+    background-color: #f8f9fa;
+    margin-top: 80px; /* Добавляем отступ сверху для компенсации фиксированной шапки */
+}
+
 .search-container {
     display: flex;
-    display: flex;
     align-items: center;
-    margin-right: 20px; /* Увеличиваем отступ справа */
+    margin-right: 20px;
 }
 
 .search-container input[type="text"] {
-    padding: 15px; /* Увеличиваем отступы */
-    width: 400px; /* Увеличиваем ширину поля поиска */
+    padding: 15px;
+    width: 400px;
     height: 10px;
-    margin-right: 15px; /* Увеличиваем отступ справа */
+    margin-right: 15px;
     border: 1px solid #ddd;
     border-radius: 15px;
-    font-size: 18px; /* Увеличиваем размер шрифта */
+    font-size: 18px;
 }
 
 .search-container button {
-    padding: 10px 20px; /* Увеличиваем отступы */
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 18px; /* Увеличиваем размер шрифта */
+    font-size: 18px;
 }
 
 .search-container button:hover {
     background-color: #0056b3;
 }
 
-main {
-    flex: 1;
-    padding: 40px; /* Увеличиваем отступы */
-    background-color: #f8f9fa;
-}
-
 .products-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 30px; /* Увеличиваем отступы */
+    gap: 30px;
     padding: 20px;
 }
 
 .product {
     background-color: #fff;
-    padding: 20px; /* Увеличиваем отступы */
+    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
@@ -112,45 +116,48 @@ main {
     width: 100%;
     height: auto;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 15px; /* Увеличиваем отступ */
-    max-height: 200px; /* Ограничиваем высоту изображения */
-    object-fit: contain; /* Сохраняем пропорции изображения */
+    margin-bottom: 15px;
+    max-height: 200px;
+    object-fit: contain;
 }
 
 .product h3 {
     margin: 15px 0;
-    font-size: 22px; /* Увеличиваем размер шрифта */
+    font-size: 22px;
 }
 
 .product .price-buy-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px; /* Увеличиваем отступ */
+    margin-top: 15px;
+    flex-direction: column;
 }
 
 .product .price {
-    font-size: 20px; /* Увеличиваем размер шрифта */
+    font-size: 20px;
     color: #007bff;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .product .btn-buy {
-    padding: 10px 20px; /* Увеличиваем отступы */
+    padding: 10px 20px;
     background-color: #28a745;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
-    font-size: 20px; /* Увеличиваем размер шрифта */
+    font-size: 20px;
 }
 
 .product .btn-buy:hover {
     background-color: #218838;
 }
+
 header nav ul li a .cart-icon {
-    width: 50px; /* Размер иконки */
-    height: 50px; /* Размер иконки */
+    width: 50px;
+    height: 50px;
     display: inline-block;
     vertical-align: middle;
     background-size: contain;
@@ -158,16 +165,16 @@ header nav ul li a .cart-icon {
 }
 
 header nav ul li a:hover .cart-icon {
-    background-color: transparent; /* Убирает фон при наведении */
-    width: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
-    height: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
 }
 
 footer {
     background-color: #343a40;
     color: #fff;
     text-align: center;
-    padding: 20px 0; /* Увеличиваем отступы */
+    padding: 20px 0;
     position: relative;
     width: 100%;
 }
