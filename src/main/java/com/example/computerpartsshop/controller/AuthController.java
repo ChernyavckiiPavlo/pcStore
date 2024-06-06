@@ -21,8 +21,14 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm() {
-        return "login"; // Это будет искать шаблон login.html
+    public String showLoginForm(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("errorMessage", "Неправильний Email або пароль");
+        }
+        if (logout != null) {
+            model.addAttribute("logoutMessage", "Ви успішно вийшли з системи");
+        }
+        return "login";
     }
 
     @GetMapping("/register")
@@ -41,9 +47,9 @@ public class AuthController {
             userService.saveUser(user);
         } catch (DataIntegrityViolationException e) {
             if (e.getMessage().contains("users.username")) {
-                model.addAttribute("usernameError", "Username is already taken.");
+                model.addAttribute("usernameError", "Користувач з таким Username вже зреєстровано.");
             } else if (e.getMessage().contains("users.email")) {
-                model.addAttribute("emailError", "Email is already registered.");
+                model.addAttribute("emailError", "Користувач з таким Email вже зреєстровано.");
             }
             return "register";
         }
