@@ -1,24 +1,22 @@
 package com.example.computerpartsshop.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
+    private String email;
     private String password;
     private String role;
     private boolean enabled;
 
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
-
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -33,6 +31,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -59,11 +65,18 @@ public class User {
         this.enabled = enabled;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
+
+    // getters and setters
+
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
+
+    // Other getters and setters
 }

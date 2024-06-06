@@ -4,63 +4,50 @@ import com.example.computerpartsshop.model.CartItem;
 import com.example.computerpartsshop.model.Order;
 import com.example.computerpartsshop.model.OrderItem;
 import com.example.computerpartsshop.model.User;
-import com.example.computerpartsshop.repository.CartItemRepository;
-import com.example.computerpartsshop.repository.OrderItemRepository;
 import com.example.computerpartsshop.repository.OrderRepository;
-import com.example.computerpartsshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class OrderService {
-    private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
+
+    private final OrderRepository orderRepository;
+    private final CartService cartService;
 
     @Autowired
-    private OrderRepository orderRepository;
+    public OrderService(OrderRepository orderRepository, CartService cartService) {
+        this.orderRepository = orderRepository;
+        this.cartService = cartService;
+    }
 
-    @Autowired
-    private CartItemRepository cartItemRepository;
-
-    @Autowired
-    private OrderItemRepository orderItemRepository;
-
-    @Autowired
-    private CartService cartService;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Transactional
-    public Order createOrder(String customerName, String customerAddress, String customerEmail, String customerPhone, Long userId) {
+    public Order createOrder(User user, String customerName, String customerAddress, String customerEmail, String customerPhone) {
         Order order = new Order();
+        order.setUser(user);
         order.setCustomerName(customerName);
         order.setCustomerAddress(customerAddress);
         order.setCustomerEmail(customerEmail);
         order.setCustomerPhone(customerPhone);
 
-        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + userId));
-        order.setUser(user);
+        // Получаем товары из корзины пользователя
+        List<CartItem> cartItems = cartService.getCartItems(user);
 
-        List<CartItem> cartItems = cartItemRepository.findAll();
+        // Преобразуем CartItem в OrderItem
+        Set<OrderItem> orderItems = new HashSet<>();
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
             orderItem.setProduct(cartItem.getProduct());
             orderItem.setQuantity(cartItem.getQuantity());
-            orderItemRepository.save(orderItem);
+            orderItem.setOrder(order);
+            orderItems.add(orderItem);
         }
 
-        orderRepository.save(order);
-        logger.info("Order created with id: " + order.getId() + " for user id: " + userId);
-
-        cartService.clearCart();
-        logger.info("Cart cleared after order creation");
-
-        return order;
+        order.setOrderItems(orderItems);
+        Order savedOrder = orderRepository.save(order);
+        cartService.clearCart(user); // Очистка корзины пользователя
+        return savedOrder;
     }
 }

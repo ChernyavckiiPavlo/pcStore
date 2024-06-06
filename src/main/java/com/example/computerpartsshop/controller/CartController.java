@@ -1,7 +1,9 @@
 package com.example.computerpartsshop.controller;
 
 import com.example.computerpartsshop.model.CartItem;
+import com.example.computerpartsshop.model.User;
 import com.example.computerpartsshop.service.CartService;
+import com.example.computerpartsshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,31 +14,32 @@ import java.util.List;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
+
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/add/{productId}")
+    public String addToCart(@PathVariable("productId") Long productId, @RequestParam("quantity") int quantity) {
+        User user = userService.getCurrentUser();
+        cartService.addItemToCart(user, productId, quantity);
+        return "redirect:/cart";
+    }
+
     @GetMapping
     public String viewCart(Model model) {
-        List<CartItem> cartItems = cartService.getCartItems();
+        User user = userService.getCurrentUser();
+        List<CartItem> cartItems = cartService.getCartItems(user);
         model.addAttribute("cartItems", cartItems);
         return "cart";
     }
 
-    @PostMapping("/add/{productId}")
-    public String addProductToCart(@PathVariable Long productId) {
-        cartService.addProductToCart(productId);
-        return "redirect:/cart";
-    }
-
-    @PostMapping("/remove/{id}")
-    public String removeCartItem(@PathVariable Long id) {
-        cartService.removeCartItem(id);
-        return "redirect:/cart";
-    }
-
     @PostMapping("/clear")
     public String clearCart() {
-        cartService.clearCart();
+        User user = userService.getCurrentUser();
+        cartService.clearCart(user);
         return "redirect:/cart";
     }
 }

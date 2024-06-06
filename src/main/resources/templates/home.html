@@ -36,6 +36,7 @@
       <div class="price-buy-container">
         <p class="price" th:text="${product.price}">Product Price</p>
         <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+          <input type="hidden" name="quantity" value="1">
           <button type="submit" class="btn-buy">Купити</button>
         </form>
       </div>
