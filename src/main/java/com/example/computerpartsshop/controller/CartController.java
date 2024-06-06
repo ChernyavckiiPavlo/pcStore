@@ -3,6 +3,7 @@ package com.example.computerpartsshop.controller;
 import com.example.computerpartsshop.model.CartItem;
 import com.example.computerpartsshop.model.User;
 import com.example.computerpartsshop.service.CartService;
+import com.example.computerpartsshop.service.OrderService;
 import com.example.computerpartsshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -21,6 +23,9 @@ public class CartController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderService orderService;
+
 
     @PostMapping("/add/{productId}")
     public ResponseEntity<String> addToCart(@PathVariable("productId") Long productId, @RequestParam("quantity") int quantity) {
@@ -33,7 +38,11 @@ public class CartController {
     public String viewCart(Model model) {
         User user = userService.getCurrentUser();
         List<CartItem> cartItems = cartService.getCartItems(user);
+        BigDecimal totalPrice = orderService.calculateTotalPrice(cartItems);
+
         model.addAttribute("cartItems", cartItems);
+        model.addAttribute("totalPrice", totalPrice);
+
         return "cart";
     }
 

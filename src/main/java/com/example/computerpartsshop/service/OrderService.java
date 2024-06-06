@@ -67,4 +67,9 @@ public class OrderService {
     public List<Order> getOrdersByUser(User user) {
         return orderRepository.findByUserOrderByCreatedAtDesc(user);
     }
+    public BigDecimal calculateTotalPrice(List<CartItem> cartItems) {
+        return cartItems.stream()
+                .map(item -> item.getProduct().getPrice().multiply(new BigDecimal(item.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 }

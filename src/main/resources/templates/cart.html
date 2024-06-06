@@ -54,6 +54,9 @@
       </tbody>
     </table>
   </div>
+  <div class="cart-summary">
+    <p>Загальна сума: <span th:text="${totalPrice}">0</span> грн</p>
+  </div>
   <div class="cart-actions">
     <form th:action="@{/cart/clear}" method="post">
       <button type="submit" class="btn-clear">Очистити кошик</button>
