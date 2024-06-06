@@ -162,6 +162,7 @@ header nav ul li a:hover .cart-icon {
     width: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
     height: 50px; /* Убедитесь, что размер соответствует размеру вашей иконки */
 }
+
 footer {
     background-color: #343a40;
     color: #fff;
